@@ -1,0 +1,8 @@
+{
+  "name": "mais-vida-app",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

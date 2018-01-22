@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="persistenceUnit">
+        <class>br.com.maisvida.model.EstadoEntity</class>
+        <class>br.com.maisvida.model.Estado</class>
+        <class>br.com.maisvida.model.Cidade</class>
+        <class>br.com.maisvida.model.Endereco</class>
+        <class>br.com.maisvida.model.Especialidade</class>
+        <class>br.com.maisvida.model.Medico</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/maisvida"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+        </properties>
+    </persistence-unit>
+</persistence>

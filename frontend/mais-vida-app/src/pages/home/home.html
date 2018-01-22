@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Médicos
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="alert alert-success alert-dismissable" *ngIf="novoRegistro">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Cadastrado!</strong> Médico cadastrado com sucesso!.
+  </div>
+  <div class="alert alert-warning alert-dismissable" *ngIf="registroRemovido">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Removido!</strong> Médico removido com sucesso!.
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Ativo</th>
+        <th>Ocupado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let medico of listaMedicos">
+        <td> {{ medico.primeiroNome }}</td>
+        <td> {{ medico.email }} </td>
+        <td>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" [checked]="medico.ativo" disabled="disabled">
+          </div>
+        </td>
+        <td>
+          <input type="radio" name="customRadio" class="custom-control-input" [checked]="medico.ocupado" disabled="disabled">
+        </td>
+        <td>
+          <button ion-button icon-only style="width: 30px; height: 30px;" (click)="goToEditPage(medico)">
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <!-- Colors -->
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="goToRegisterPage()">Novo</button>
+  </ion-fab>
+</ion-content>

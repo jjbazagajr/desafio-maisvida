@@ -1,0 +1,75 @@
+<!--
+  Generated template for the CadastroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>cadastro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="alert alert-danger alert-dismissable" *ngIf="mensagemErro != null">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong *ngFor="let mensagem of mensagemErro">{{ mensagem }}<br></strong>
+      </div>
+  <form>
+    <input type="hidden" [(ngModel)]="medico.id" name="id">
+    <ion-item>
+      <ion-label color="primary" fixed>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="medico.primeiroNome" name="primeiroNome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" fixed>Útimo nome</ion-label>
+      <ion-input type="text" [(ngModel)]="medico.ultimoNome" name="ultimoNome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" fixed>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="medico.email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Especialidade</ion-label>
+      <ion-select [(ngModel)]="especialidadeId" name="especialidade" (ionChange)='onChangeEsp()'>
+        <ion-option>Selecione</ion-option>
+        <ion-option value="{{ espec.id }}" *ngFor="let espec of especialidades">{{ espec.nome }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ativo</ion-label>
+      <ion-select [(ngModel)]="medico.ativo" name="ativo">
+        <ion-option value="true">Sim</ion-option>
+        <ion-option value="false">Não</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Status</ion-label>
+      <ion-select [(ngModel)]="medico.ocupado" name="ocupado">
+        <ion-option value="true">Ocupado</ion-option>
+        <ion-option value="false">Livre</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Estado</ion-label>
+      <ion-select  [(ngModel)]="estadoId" name="estado" (ionChange)='getCities()'>
+        <ion-option>Selecione</ion-option>
+        <ion-option *ngFor="let esta of estados" value="{{esta.id}}">{{ esta.sigla }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cidade</ion-label>
+      <ion-select  [(ngModel)]="cidadeId" name="cidade" (ionChange)='onChangeCity()'>
+          <ion-option>Selecione</ion-option>
+          <ion-option *ngFor="let cidade of cidades" value="{{cidade.id}}">{{ cidade.nome }}</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <button ion-button style="margin-top: 25px;" (click)="saveDoctor()">Salvar</button>
+    <button ion-button style="margin-top: 25px;" color="danger" (click)="cancel()">Cancelar</button>
+    <button ion-button style="margin-top: 25px;" color="danger" (click)="removerRegistro()" *ngIf="medico.id != null">Remover</button>
+  </form>
+</ion-content>
